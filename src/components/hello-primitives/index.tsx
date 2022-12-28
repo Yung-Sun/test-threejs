@@ -10,6 +10,18 @@ import {myCircle} from "./primitives/my-circle";
 import {myCone} from "./primitives/my-cone";
 import {myCylinder} from "./primitives/my-cylinder";
 import {myDodecahedron} from "./primitives/my-dodecahedron";
+import {myExtrude} from "./primitives/my-extrude";
+import {myIcosahedron} from "./primitives/my-icosahedron";
+import {myLathe} from "./primitives/my-lathe";
+import {myOctahedron} from "./primitives/my-octahedron";
+import {myPlane} from "./primitives/my-plane";
+import {myPolyhedron} from "./primitives/my-polyhedron";
+import {myRing} from "./primitives/my-ring";
+import {myShape} from "./primitives/my-shape";
+import {mySphere} from "./primitives/my-sphere";
+import {myTetrahedron} from "./primitives/my-tetrahedron";
+import {myTorus} from "@/components/hello-primitives/primitives/my-torus";
+import {myTorusKnot} from "@/components/hello-primitives/primitives/my-torus-knot";
 
 
 const meshArr: (Three.Mesh | Three.LineSegments)[] = []
@@ -59,6 +71,9 @@ const HelloPrimitives = () => {
         // solid类型图元数组，存放所有 solid 类型的图元
         const solidPrimitivesArr: Three.BufferGeometry[] = []
         solidPrimitivesArr.push(myBox, myCircle, myCone, myCylinder, myDodecahedron)
+        solidPrimitivesArr.push(myExtrude, myIcosahedron, myLathe, myOctahedron, myPlane)
+        solidPrimitivesArr.push(myPolyhedron, myRing, myShape, mySphere, myTetrahedron)
+        solidPrimitivesArr.push(myTorus, myTorusKnot)
         solidPrimitivesArr.forEach((item) => {
             const material = createMaterial() // 获得一种颜色随机的材质
             const mesh = new Three.Mesh(item, material)
