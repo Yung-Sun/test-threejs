@@ -2,7 +2,11 @@ import {useCallback, useEffect, useRef} from "react";
 import './index.scss'
 import * as Three from "three";
 import {myBox} from "./primitives/my-box"
+import {myCircle} from "./primitives/my-circle";
+import {myCone} from "./primitives/my-cone";
+
 import {myWireframe} from "./primitives/my-wireframe";
+
 
 const meshArr: (Three.Mesh | Three.LineSegments)[] = []
 
@@ -50,7 +54,7 @@ const HelloPrimitives = () => {
 
         // solid类型图元数组，存放所有 solid 类型的图元
         const solidPrimitivesArr: Three.BufferGeometry[] = []
-        solidPrimitivesArr.push(myBox)
+        solidPrimitivesArr.push(myBox, myCircle, myCone)
         solidPrimitivesArr.forEach((item) => {
             const material = createMaterial() // 获得一种颜色随机的材质
             const mesh = new Three.Mesh(item, material)
@@ -60,8 +64,8 @@ const HelloPrimitives = () => {
         //获得各个 line 类型的图元实例，并添加到 meshArr 中
         const linePrimitivesArr: Three.BufferGeometry[] = []
         linePrimitivesArr.push(myWireframe)
-        linePrimitivesArr.forEach(item=>{
-            const material =  new Three.LineBasicMaterial({ color: 0x000000 })
+        linePrimitivesArr.forEach(item => {
+            const material = new Three.LineBasicMaterial({color: 0x000000})
             const mesh = new Three.LineSegments(item, material)
             meshArr.push(mesh)
         })
