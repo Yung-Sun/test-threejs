@@ -4,6 +4,7 @@ import * as Three from "three";
 import {myBox} from "./primitives/my-box"
 import {myCircle} from "./primitives/my-circle";
 import {myCone} from "./primitives/my-cone";
+import {myCylinder} from "@/components/hello-primitives/primitives/my-cylinder";
 
 import {myWireframe} from "./primitives/my-wireframe";
 
@@ -54,7 +55,7 @@ const HelloPrimitives = () => {
 
         // solid类型图元数组，存放所有 solid 类型的图元
         const solidPrimitivesArr: Three.BufferGeometry[] = []
-        solidPrimitivesArr.push(myBox, myCircle, myCone)
+        solidPrimitivesArr.push(myBox, myCircle, myCone, myCylinder)
         solidPrimitivesArr.forEach((item) => {
             const material = createMaterial() // 获得一种颜色随机的材质
             const mesh = new Three.Mesh(item, material)
