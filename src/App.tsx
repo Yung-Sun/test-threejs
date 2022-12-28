@@ -1,9 +1,13 @@
 import './App.css';
+import HelloPrimitives from "@/components/hello-primitives";
 import HelloThreejs from "@/components/hello-threejs";
 
 function App() {
     return (
-        <HelloThreejs/>
+        <>
+            <HelloPrimitives/>
+            <HelloThreejs/>
+        </>
     );
 }
 
