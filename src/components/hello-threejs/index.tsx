@@ -1,5 +1,14 @@
 import React, {useRef, useEffect} from 'react'
-import {WebGLRenderer, PerspectiveCamera, Scene, BoxGeometry, Mesh, DirectionalLight, MeshPhongMaterial} from 'three'
+import {
+    WebGLRenderer,
+    PerspectiveCamera,
+    Scene,
+    BoxGeometry,
+    Mesh,
+    DirectionalLight,
+    MeshPhongMaterial,
+    AmbientLight
+} from 'three'
 import './index.scss'
 
 const HelloThreejs: React.FC = () => {
@@ -34,16 +43,22 @@ const HelloThreejs: React.FC = () => {
 
             const cubes = [cube1, cube2, cube3]
 
+            // DirectionalLight 线性光可以产生阴影效果
+            const light0 = new DirectionalLight(0xFFFFFF, 0.8)
+            light0.position.set(-1, 2, 4)
+            // AmbientLight 可以均匀照亮所有物体
+            const light1 = new AmbientLight(0xFFFFFF, 0.3)
 
-            const light = new DirectionalLight(0xFFFFFF, 1.5)
-            light.position.set(-1, 2, 4)
-            scene.add(light)
+            const light2 = new DirectionalLight(0xffffff, 1)
+            light2.position.set(4,0,0)
+            scene.add(light2)
+            scene.add(light1)
 
             camera.position.z = 5
 
             const render = (time: number) => {
                 time = time * 0.001 //原本 time 为毫秒，我们这里对 time 进行转化，修改成 秒，以便于我们动画旋转角度的递增
-                cubes.map(cube => {
+                cubes.forEach(cube => {
                     cube.rotation.x = time * 0.5
                     cube.rotation.y = time * 0.5
                     cube.rotation.z = time * 0.5
